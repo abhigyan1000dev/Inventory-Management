@@ -8,5 +8,7 @@ public interface DepartmentService {
     public Department saveDepartment(Department department);
 
     public List<Department> fetchAllDepartmentsList();
+
+    public Department fetchDepartmentById(Long departmentId);
 }
 
