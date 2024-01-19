@@ -51,7 +51,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     /**
      * @param departmentId
      * @param department
-     * @return
+     * @return Department
      */
     @Override
     public Department updateDepartmentById(Long departmentId, Department department) {
@@ -64,5 +64,13 @@ public class DepartmentServiceImpl implements DepartmentService {
         return departmentRepository.save(departmentFromDB);
     }
 
+    /**
+     * @param departmentName
+     * @return Department with respective Name
+     */
+    @Override
+    public Department fetchDepartmentbyName(String departmentName) {
+        return departmentRepository.findByDepartmentName(departmentName);
+    }
 
 }
