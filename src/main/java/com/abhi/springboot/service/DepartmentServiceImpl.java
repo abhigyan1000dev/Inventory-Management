@@ -39,4 +39,30 @@ public class DepartmentServiceImpl implements DepartmentService {
     public Department fetchDepartmentById(Long departmentId) {
         return departmentRepository.findById(departmentId).get();
     }
+
+    /**
+     * @param departmentId
+     */
+    @Override
+    public void deleteDepartmentById(Long departmentId) {
+        departmentRepository.deleteById(departmentId);
+    }
+
+    /**
+     * @param departmentId
+     * @param department
+     * @return
+     */
+    @Override
+    public Department updateDepartmentById(Long departmentId, Department department) {
+        Department departmentFromDB =  departmentRepository.findById(departmentId).get();
+
+        //Now I have the department Object with the corresponding ID;
+        if(departmentFromDB.getDepartmentName()!= null) departmentFromDB.setDepartmentName(department.getDepartmentName());
+        if(departmentFromDB.getDepartmentAddress()!= null) departmentFromDB.setDepartmentAddress(department.getDepartmentAddress());
+        if(departmentFromDB.getDepartmentCode()!= null) departmentFromDB.setDepartmentCode(department.getDepartmentCode());
+        return departmentRepository.save(departmentFromDB);
+    }
+
+
 }
